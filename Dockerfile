@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-CMD npm run build
+RUN npm run build
 
 FROM nginx
 # Elastic beanstalk will map container port to 80 for http trafic
