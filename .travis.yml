@@ -10,19 +10,23 @@ script:
   - docker run -e CI=true surindergiri/docker-react npm run test -- --coverage
 
 # AWS configurations to deploy build from Travis CI
-# deploy:
-# # Tell to Travis CI that we are going to deploy app on AWS EBS
-#   provider: elasticbeanstalk
-# # AWS EBS region
-#   region: "us-east-2"
-# # Exact name of the application generated inside EBS
-#   app: "docker"
-# # Environment get created along with EBS application
-#   env: "Docker-env"
-# # Bucket name get created along with EBS application, Navigate to S3 section
-#   bucket_name: "elasticbeanstalk-us-east-2-880476518541"
-# # S3 folder inside zip code will reside to build containers
-#   bucket_path: "docker-app"
-# # Deploy to AWS only when the code is pushed to github "master" branch
-#   on:
-#     branch: master
+deploy:
+  
+# Tell to Travis CI that we are going to deploy app on AWS EBS
+  provider: elasticbeanstalk
+# AWS EBS region
+  region: "us-east-2"
+# Exact name of the application generated inside EBS
+  app: "docker"
+# Environment get created along with EBS application
+  env: "Docker-env"
+# Bucket name get created along with EBS application, Navigate to S3 section
+  bucket_name: "elasticbeanstalk-us-east-2-880476518541"
+# S3 folder inside zip code will reside to build containers
+  bucket_path: "docker-app"
+# Deploy to AWS only when the code is pushed to github "master" branch
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
