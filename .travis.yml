@@ -1,6 +1,6 @@
-// we have to have super user level permissions to execute build
+# we have to have super user level permissions to execute build
 sudo: required
-// we required docker cli pre 
+# we required docker cli pre 
 services:
   - docker
 before_install:
